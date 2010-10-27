@@ -1,0 +1,90 @@
+<erl>
+
+%
+%  ircDDB livelog
+%
+%  Copyright (C) 2010   Michael Dirska, DL1BFF (dl1bff@mdx.de)
+%
+%  This program is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 2 of the License, or
+%  (at your option) any later version.
+%
+%  This program is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You should have received a copy of the GNU General Public License
+%  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+%
+
+
+
+out(A) ->
+  [ {header, {cache_control, "no-cache"}},
+  {content, "text/plain", 
+  case file:open("/home/mdirska/web/livelog2.txt",[read, raw]) of
+        {ok, Fd} ->
+	    do_read(Fd, A);
+        Err ->
+            "err"
+    end  } ].
+
+
+do_read(Fd, A) ->
+  case file:position(Fd, {eof, 0}) of
+  {ok, NewPosition} ->
+	EndPos = NewPosition div 100,
+	P = yaws_api:parse_query(A),
+	ReqPos = case lists:keysearch("p", 1, P) of
+		{ K, { Key, Value } } ->
+		 try
+		   list_to_integer(Value)
+		 catch
+                   error:Reason -> 0
+		 end ;
+		false ->
+		  0
+		end,
+	Num = EndPos - ReqPos,
+	if
+	  (Num > 0) and (Num < 100) ->
+		do_read(Fd, ReqPos, Num - 1);
+	  true ->
+		if
+		  EndPos =< 100 ->
+		    do_read(Fd, 0, EndPos - 1);
+		  true ->
+		    do_read(Fd, EndPos - 100, 99)
+		end
+	end;
+  {error, Reason} ->
+	f("err ~p", [Reason])
+  end.
+
+
+do_read(Fd, Pos, Num) ->
+  file:position(Fd, Pos * 100),
+  Result =  f("~B:~s~n", [Pos,
+	case file:read(Fd, 99) of
+                 {ok, Data} ->
+                        string:strip(Data);
+                 eof ->
+                        "";
+                 {error, Reason} ->
+                        f("error ~p", [Reason])
+                 end ]) ,
+
+  if
+    Num > 0 ->
+      	Result ++ do_read(Fd, Pos + 1, Num - 1);
+
+    true ->
+	file:close(Fd),
+	Result
+  end.
+
+
+</erl>

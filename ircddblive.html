@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+#
+# ircDDB livelog
+#
+# Copyright (C) 2010   Michael Dirska, DL1BFF (dl1bff@mdx.de)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="livelog.js"></script>
+<style type="text/css">
+ul { padding: 0px; margin: 0px; }
+body { height: 100%; overflow: hidden; }
+#stream {  position: absolute; width: 100%; left: 0; bottom: 0; margin-bottom: 3ex; font-family: monospace; }
+#stream li { overflow: hidden; white-space: nowrap; }
+#desc {  position: absolute; width: 100%; left: 0; bottom: 0; font-family: monospace; }
+#desc li { overflow: hidden; white-space: nowrap; height: 3ex; background-color: #0f0f0f; color: #ffffff }
+.xlist { display: inline-block; margin-left: 4px; padding-left: 3px; margin-right: 4px; }
+.time { width: 6em;  }
+.mycall { width: 9em; }
+.urcall { width: 6em;  }
+.rpt1 { width: 6em;  }
+.rpt2 { width: 6em;  }
+.txmsg { width: 14em;  }
+.flags { width: 6em;  }
+.linebg0 { background-color: #f0f0f0 }
+.linebg1 { background-color: #f0f0a0 }
+</style>
+<title>ircDDB live log</title>
+</head>
+<body>
+<noscript> <p>Your browser does not support JavaScript! </p></noscript>
+<ul id="stream">
+<li>Live <a href="http://ircddb.net">ircDDB</a> data will appear here if you enable JavaScript.</li>
+</ul>
+<ul id="desc">
+<li><span
+ class="xlist time">UTC</span><span
+ class="xlist mycall">MYCALL</span><span
+ class="xlist urcall">URCALL</span><span
+ class="xlist rpt1">RPT1</span><span
+ class="xlist rpt2">RPT2</span><span
+ class="xlist txmsg">TX MSG</span><span
+ class="xlist flags">Flags</span></li>
+</ul>
+</body>
+</html>
