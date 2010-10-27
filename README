@@ -1,0 +1,17 @@
+
+ircDDB livelog
+
+View live ircDDB data on the web. 
+
+
+Needs:
+
+http://jquery.com/
+
+ (install  jquery-1.4.2.min.js  in the web server directory)
+
+
+http://yaws.hyber.org/
+ 
+ (Web server written in Erlang)
+ 
