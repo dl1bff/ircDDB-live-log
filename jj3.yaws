@@ -25,7 +25,7 @@
 out(A) ->
   [ {header, {cache_control, "no-cache"}},
   {content, "text/plain", 
-  case file:open("/home/mdirska/web/livelog3.txt",[read, raw]) of
+  case file:open("/home/mdirska/ircDDB-live-log/livelog3.txt",[read, raw]) of
         {ok, Fd} ->
 	    do_read(Fd, A);
         Err ->

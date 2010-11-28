@@ -19,20 +19,9 @@
 
 CFLAGS=-Wall
 
-all: /var/www/livelog/jj.yaws /var/www/livelog/ircddblive.html /var/www/livelog/livelog.js \
-  /var/www/livelog/jj3.yaws /var/www/livelog/ircddblive3.html /var/www/livelog/livelog3.js \
+all: /var/www/livelog/jj3.yaws /var/www/livelog/ircddblive3.html /var/www/livelog/livelog3.js \
   filter_log
 
-
-
-/var/www/livelog/jj.yaws: jj.yaws
-	cp jj.yaws /var/www/livelog/jj.yaws
-
-/var/www/livelog/ircddblive.html: ircddblive.html
-	cp ircddblive.html /var/www/livelog/ircddblive.html
-
-/var/www/livelog/livelog.js: livelog.js
-	cp livelog.js /var/www/livelog/livelog.js
 
 /var/www/livelog/jj3.yaws: jj3.yaws
 	cp jj3.yaws /var/www/livelog/jj3.yaws
