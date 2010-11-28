@@ -1,6 +1,6 @@
 /*
 
-rcDDB livelog
+ircDDB live log
 
 Copyright (C) 2010   Michael Dirska, DL1BFF (dl1bff@mdx.de)
 
