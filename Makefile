@@ -17,8 +17,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+CFLAGS=-Wall
 
-all: /var/www/livelog/jj.yaws /var/www/livelog/ircddblive.html /var/www/livelog/livelog.js
+all: /var/www/livelog/jj.yaws /var/www/livelog/ircddblive.html /var/www/livelog/livelog.js \
+  /var/www/livelog/jj3.yaws /var/www/livelog/ircddblive3.html /var/www/livelog/livelog3.js \
+  filter_log
+
 
 
 /var/www/livelog/jj.yaws: jj.yaws
@@ -29,4 +33,13 @@ all: /var/www/livelog/jj.yaws /var/www/livelog/ircddblive.html /var/www/livelog/
 
 /var/www/livelog/livelog.js: livelog.js
 	cp livelog.js /var/www/livelog/livelog.js
+
+/var/www/livelog/jj3.yaws: jj3.yaws
+	cp jj3.yaws /var/www/livelog/jj3.yaws
+
+/var/www/livelog/ircddblive3.html: ircddblive3.html
+	cp ircddblive3.html /var/www/livelog/ircddblive3.html
+
+/var/www/livelog/livelog3.js: livelog3.js
+	cp livelog3.js /var/www/livelog/livelog3.js
 

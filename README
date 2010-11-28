@@ -14,6 +14,12 @@ http://jquery.com/
 http://yaws.hyber.org/
  
  (Web server written in Erlang)
+
+
+GNU-awk
+
+(Debian package gawk, not the default mawk)
+
  
 
 How does it work?
@@ -22,9 +28,9 @@ The gen_livelog2_txt.sh script uses the debug log output of
 this software:  http://github.com/dl1bff/ircDDB-DV  MemDB.java.
 It generates a text file with fixed record length of 99 chars plus
 one newline character -> 100 bytes per line. This file is used by
-the Erlang script jj.yaws which runs inside a YAWS web server.
-Requests to the server look like this:  http://example.com/jj.yaws?p=<pos> 
+the Erlang script jj3.yaws which runs inside a YAWS web server.
+Requests to the server look like this:  http://example.com/jj3.yaws?p=pos 
 where <pos> is the line position in the text file. Not more than 100
-lines are returned.  In the client browser, livelog.js requests
+lines are returned.  In the client browser, livelog3.js requests
 the latest log lines every 5 seconds.
 
