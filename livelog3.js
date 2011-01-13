@@ -80,7 +80,7 @@ function showData(response)
 
 	  if (line.length >= (87 + pos))
 	  {
-	    x_txmsg = line.substr(67 + pos, 20).replace(/_/g, " ");
+	    x_txmsg = line.substr(67 + pos, 20).replace(/_/g, " ").replace(/\&/g, "&amp;").replace(/</g, "&#60;");
 	  }
 	  else
 	  {
@@ -88,22 +88,33 @@ function showData(response)
 	  }
 
 	  type_flag = line.substr(30 + pos, 1);
+	  type_flag2 = line.substr(57 + pos, 2);
+
+	  txstats = "";
+	  mycall_err = "";
+	  urcall_err = "";
 
 	  if (type_flag == "1")
 	  {
 	    txstats = " txstats";
 	  }
-	  else
+	  else if (type_flag == "2")
 	  {
-	    txstats = "";
+	    mycall_err = " err";
 	  }
+
+	  if (type_flag2 == "01")
+	  {
+	    urcall_err = " err";
+	  }
+
 
 	  p = num % 2;
 
 	  var newNode = $("<li style=\"display:none\">" +
              	"<span class=\"xlist time linebg" + p + "\">" + x_time + "</span>" + 
-		"<span class=\"xlist mycall linebg" + p + "\">" + x_mycall + "</span>" + 
-		"<span class=\"xlist urcall linebg" + p + "\">" + x_urcall + "</span>" +
+		"<span class=\"xlist mycall linebg" + p + mycall_err + "\">" + x_mycall + "</span>" + 
+		"<span class=\"xlist urcall linebg" + p + urcall_err + "\">" + x_urcall + "</span>" +
 		"<span class=\"xlist rpt1 linebg" + p + "\">" + x_rpt1 + "</span>" +
 		"<span class=\"xlist rpt2 linebg" + p + "\">" + x_rpt2 + "</span>" +
 		"<span class=\"xlist dest linebg" + p + "\">" + x_dest + "</span>" +

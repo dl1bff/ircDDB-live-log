@@ -1,7 +1,7 @@
 #
 # ircDDB livelog
 #
-# Copyright (C) 2010   Michael Dirska, DL1BFF (dl1bff@mdx.de)
+# Copyright (C) 2011   Michael Dirska, DL1BFF (dl1bff@mdx.de)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@ all: /var/www/livelog/jj3.yaws /var/www/livelog/ircddblive3.html /var/www/livelo
 
 /var/www/livelog/ircddblive3.html: ircddblive3.html
 	cp ircddblive3.html /var/www/livelog/ircddblive3.html
+	cp ircddblive3.html /var/www/livelog/ircddblive.html
 
 /var/www/livelog/livelog3.js: livelog3.js
 	cp livelog3.js /var/www/livelog/livelog3.js
