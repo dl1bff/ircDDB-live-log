@@ -41,7 +41,7 @@ body { height: 100%; overflow: hidden; }
 .dest { width: 6em;  }
 .txmsg { width: 14em;  }
 .txstats { color: #108010; font-weight: bold  }
-.err { color: #801010; }
+.err { color: #f01010; }
 .flags { width: 6em; }
 .linebg0 { background-color: #f0f0f0 }
 .linebg1 { background-color: #f0f0a0 }
@@ -56,8 +56,8 @@ body { height: 100%; overflow: hidden; }
 <ul id="desc">
 <li><span
  class="xlist time" title="Receive time reported from the repeater. Note: the reported time depends on the precision of the repeaters system clock. It might not show the exact time.">UTC</span><span
- class="xlist mycall" title="The 'My Call' field from the DSTAR header.">MYCALL</span><span
- class="xlist urcall" title="The 'Your Call' field from the DSTAR header. This field is empty if the repeater does not report it.">URCALL</span><span
+ class="xlist mycall" title="The 'My Call' field from the DSTAR header. This field is shown in red if the callsign is not registered with the trust server.">MYCALL</span><span
+ class="xlist urcall" title="The 'Your Call' field from the DSTAR header. This field is empty if the repeater does not report it. This field is shown in red if the callsign is not registered with the trust server.">URCALL</span><span
  class="xlist rpt1" title="The 'Repeater 1' field from the DSTAR header. This is the callsign of the repeater where this transmission was received.">RPT1</span><span
  class="xlist rpt2" title="The 'Repeater 2' field from the DSTAR header. This field is empty if the repeater does not report it.">RPT2</span><span
  class="xlist dest" title="Callsign of the repeater or reflector to which this transmission was sent. This field is empty if the repeater does not report it or if the transmission was not sent over the network.">DEST</span><span
