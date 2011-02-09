@@ -68,24 +68,24 @@ function showData(response)
 
 	    if (x_dest == "________")
 	    {
-	      x_dest = "&middot;"
+	      x_dest = "&middot;";
 	    }
 	  }
 	  else
 	  {
 	    x_urcall = "&middot;";
-	    x_rpt2 = "&middot;"
-	    x_flags = "&middot;"
-	    x_dest = "&middot;"
+	    x_rpt2 = "&middot;";
+	    x_flags = "&middot;";
+	    x_dest = "&middot;";
 	  }
 
 	  if (line.length >= (87 + pos))
 	  {
-	    x_txmsg = line.substr(67 + pos, 20).replace(/_/g, " ").replace(/\&/g, "&amp;").replace(/</g, "&#60;");
+	    x_txmsg = line.substr(67 + pos, 20).replace(/_/g, "\240");
 	  }
 	  else
 	  {
-	    x_txmsg = "&middot;"
+	    x_txmsg = "\267";
 	  }
 
 	  type_flag = line.substr(30 + pos, 1);
@@ -122,14 +122,15 @@ function showData(response)
 		"<span class=\"xlist rpt1 linebg" + p + "\">" + x_rpt1 + "</span>" +
 		"<span class=\"xlist rpt2 linebg" + p + "\">" + x_rpt2 + "</span>" +
 		"<span class=\"xlist dest linebg" + p + "\">" + x_dest + "</span>" +
-		"<span class=\"xlist txmsg linebg" + p + "\">" + x_txmsg + "</span>" +
-		"<span class=\"xlist txs linebg" + p + "\">" + "&middot;" + "</span>" +
+		"<span class=\"xlist txmsg linebg" + p + "\">&middot;</span>" +
+		"<span class=\"xlist txs linebg" + p + "\">&middot;</span>" +
 		"<span class=\"xlist flags linebg" + p + "\">" + x_flags + "</span>" +
 			"</li>");
 	    $("#stream").append(newNode);
 	    newNode.slideDown();
 	    deleteOldest();
-	    if (x_txmsg != "&middot;")
+	    newNode.find("span.txmsg").text(x_txmsg);
+	    if (x_txmsg.length > 1)
 	    {
 	      newNode.find("span.mycall").addClass("txactive");
 	      newNode.find("span.txs").addClass("txactive").text("TX on");
@@ -143,19 +144,19 @@ function showData(response)
 	    while (n.length > 0)
 	    {
 	      var myc = n.find("span.mycall");
+	      var rpt1 = n.find("span.rpt1");
+	      var txs =  n.find("span.txs");
 
-	      if ((myc.text() == x_mycall))
+	      if ((myc.text() == x_mycall) && (found == 0))
 	      {
-		var txs =  n.find("span.txs");
-		if (found == 0)
-		{
-		  txs.text(x_txmsg);
-		  found = 1;
-		}
-		else if (txs.text() == "TX on")
-		{
-		  txs.html("&middot;");
-		}
+		txs.text(x_txmsg);
+		found = 1;
+		myc.removeClass("txactive");
+		txs.removeClass("txactive");
+	      }
+	      else if ((rpt1.text() == x_rpt1) && (txs.text() == "TX on"))
+	      {
+		txs.html("&middot;");
 		myc.removeClass("txactive");
 		txs.removeClass("txactive");
 	      }
