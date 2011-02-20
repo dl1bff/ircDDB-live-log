@@ -18,6 +18,7 @@
 // 
 
 var lastNum = 0;
+var infoShown = 0;
 
 function ajaxSettings()
 {
@@ -132,6 +133,19 @@ function showData(response)
       }
     }
     lastNum = maxNum;
+
+    if ((lines.length < 4) && (infoShown == 0))
+    {
+      var newNode = $("<li style=\"display:none\">" +
+          "<span class=\"blueinfo\">" +
+            "You don't see your call sign here? Please read: " +
+            "<a href=\"http://ircddb.net/live-vis.html\" target=\"_blank\">http://ircddb.net/live-vis.html</a>" +
+          "</span></li>");
+      $("#stream").append(newNode);
+      newNode.slideDown();
+
+      infoShown = 1;
+    }
   }
 }
 
