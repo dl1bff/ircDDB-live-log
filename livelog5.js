@@ -148,7 +148,7 @@ function showData(response)
 	      var rpt1 = n.find("span.rpt1");
 	      var txs =  n.find("span.txs");
 
-	      if ((myc.text() == x_mycall) && (found == 0))
+	      if ((rpt1.text() == x_rpt1) && (found == 0))
 	      {
 		txs.text(x_txmsg);
 		found = 1;
