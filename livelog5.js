@@ -1,7 +1,7 @@
 // 
 //  ircDDB livelog
 // 
-//  Copyright (C) 2011   Michael Dirska, DL1BFF (dl1bff@mdx.de)
+//  Copyright (C) 2012   Michael Dirska, DL1BFF (dl1bff@mdx.de)
 // 
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -95,6 +95,7 @@ function showData(response)
 	  txstats = "";
 	  mycall_err = "";
 	  urcall_err = "";
+	  destcall_link = "";
 
 	  if (type_flag == "1")
 	  {
@@ -110,6 +111,17 @@ function showData(response)
 	    urcall_err = " err";
 	  }
 
+	  if (x_urcall == "CQCQCQ__" )
+	  {
+	    if (x_dest.substr(0,3) == "STN")
+	    {
+	      x_dest = "&middot;";
+	    }
+	    else if (x_dest != "&middot;")
+	    {
+	     destcall_link = " link";
+	    }
+	  }
 
 	  if (txstats == "")
 	  {
@@ -122,7 +134,7 @@ function showData(response)
 		"<span class=\"xlist urcall linebg" + p + urcall_err + "\">" + x_urcall + "</span>" +
 		"<span class=\"xlist rpt1 linebg" + p + "\">" + x_rpt1 + "</span>" +
 		"<span class=\"xlist rpt2 linebg" + p + "\">" + x_rpt2 + "</span>" +
-		"<span class=\"xlist dest linebg" + p + "\">" + x_dest + "</span>" +
+		"<span class=\"xlist dest linebg" + p + destcall_link +"\">" + x_dest + "</span>" +
 		"<span class=\"xlist txmsg linebg" + p + "\">&middot;</span>" +
 		"<span class=\"xlist txs linebg" + p + "\">&middot;</span>" +
 		"<span class=\"xlist flags linebg" + p + "\">" + x_flags + "</span>" +
