@@ -3,7 +3,7 @@
 #
 #  ircDDB livelog
 #
-#  Copyright (C) 2010   Michael Dirska, DL1BFF (dl1bff@mdx.de)
+#  Copyright (C) 2012   Michael Dirska, DL1BFF (dl1bff@mdx.de)
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,6 +20,10 @@
 #
 #
 
-tail --pid=$$ -F ../dstardb/stdout.txt | ./filter_log > livelog3.txt
+OUTPUTFILE=livelog3.txt
+
+rm -f $OUTPUTFILE
+
+tail --pid=$$ -F ../dstardb/stdout.txt | ./filter_log >> $OUTPUTFILE
 
 
