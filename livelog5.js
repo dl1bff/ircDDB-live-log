@@ -1,7 +1,7 @@
 // 
 //  ircDDB livelog
 // 
-//  Copyright (C) 2012   Michael Dirska, DL1BFF (dl1bff@mdx.de)
+//  Copyright (C) 2013   Michael Dirska, DL1BFF (dl1bff@mdx.de)
 // 
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -143,7 +143,7 @@ function showData(response)
 	    newNode.slideDown();
 	    deleteOldest();
 	    newNode.find("span.txmsg").text(x_txmsg);
-	    if (x_txmsg.length > 1)
+	    if (x_rpt2 != x_urcall)
 	    {
 	      newNode.find("span.mycall").addClass("txactive");
 	      newNode.find("span.txs").addClass("txactive").text("TX on");
